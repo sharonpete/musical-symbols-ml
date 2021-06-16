@@ -1,18 +1,509 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Hugo 0.83.1">
+<meta name="docsearch:language" content="en">
+<meta name="docsearch:version" content="5.0">
+
+<title>Musical Notes - ML</title>
+
+<!-- Bootstrap core CSS -->
+<link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="https://getbootstrap.com/docs/5.0/assets/css/docs.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
 
 
-        <title>ML Musical Symbols</title>
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-146052-10', 'getbootstrap.com');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-        <!-- load bootstrap and stylesheets here-->
+  </head>
+  <body>
+  <nav class="bd-subnavbar py-2 newheader" aria-label="Secondary navigation">
+  <div class="container-xxl d-flex align-items-md-center">
+    <div class="position-relative me-auto">
+      <img src="assets/images/mlicon.png" style="height:36px"> <span class="ptitle">Musical Note Detection using Machine Learning</span>
+    </div>
 
-    </head>
-    <body>
-        <h2>ML Musical Symbols</h2>
-    </body>
+    <div class="dropdown ms-3">
+  <button class="btn btn-bd-light" id="bd-versions"  aria-expanded="false" data-bs-display="static">
+    <span class="d-none d-lg-inline githublink">View on GitHub</span>
+  </button>
+</div>
 
 
+  </div>
+</nav>
+
+
+  <div class="container-xxl my-md-4 bd-layout cstm">
+
+    <main class="bd-main order-1">
+      <div class="bd-intro ps-lg-4">
+        <div class="d-md-flex align-items-center justify-content-between">
+          <h1 class="bd-title" id="content">Introduction</h1>
+        </div>
+        <p class="bd-lead">
+		Labeled datasets are ideal for use in supervised learning to train classifiers. 
+		Having toyed around with the MNIST dataset, we looked for and thankfully found a comparable dataset that could be subjected to supevised learning. 
+		With a dense neural network comprising of an input layer, 2 hidden layer with 100 nodes each, and an output layer, we compared 8 different optimizers in our sequential model and present our process and results.
+		</p>
+
+      </div>
+        <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
+          <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#content">Introduction</a>
+      <ul>
+        <li><a href="#problemstatement">Problem Statement</a></li>
+        <li><a href="#methodology">Methodology</a>
+          <ul>
+            <li><a href="#meth1">Data Sourcing</a></li>
+            <li><a href="#meth2">Data Preparation</a></li>
+            <li><a href="#meth3">Model Building</a></li>
+            <li><a href="#meth4">Model Evaluation</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#discussion">Discussion</a></li>
+    <li><a href="#team">Team</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+
+
+      <div class="bd-content ps-lg-4">
+
+
+        <h2 id="problemstatement">Problem Statement</h2>
+<p>Build a sequential model to train classifiers to predict/identify one of five musical notes.</p>
+<h2 id="methodology">Methodology</h2>
+<p>Our project methodology is divided into the following four sections:.</p>
+<ul>
+<li>Data Sourcing.</li>
+<li>Data Preparation.</li>
+<li>Model Builiding.</li>
+<li>Model Evaluation.</li>
+</ul>
+
+<h3 id="meth1">Dataset Sourcing</h3>
+<p>Our project required a labeled dataset with all images equally sized. Our search for such a dataset led us to the Musical Notes Datasets below.</p> 
+<div class="card">
+  <div class="card-header">
+    <img src="https://storage.googleapis.com/kaggle-avatars/thumbnails/5573657-kg.jpg" style="height:32px; border-radius:5px"> <a href="https://www.kaggle.com/kishanj" target="_blank">kishanj.</a> Dataset maintainer/owner. 
+	    <a href="https://www.kaggle.com/kishanj/music-notes-datasets?select=data1.csv" class="btn btn-primary" style="float:right">View on kaggle.com</a>
+
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Music Notes Datasets</h5>
+    <p class="card-text">5000 images. 5 different categories/classes/labels each with 1000 images. The data structure is similar to MNIST. Image size 64*64 pixels.</p>
+  </div>
+  <div class="rowx"> 
+  <div class="columnx">
+    <img src="assets/images/e1.jpg" style="width:100%">
+  </div>
+  <div class="columnx">
+    <img src="assets/images/h1.jpg" style="width:100%">
+  </div>
+  <div class="columnx">
+    <img src="assets/images/q1.jpg" style="width:100%">
+  </div>
+  <div class="columnx">
+    <img src="assets/images/s1.jpg" style="width:100%">
+  </div>
+  <div class="columnx">
+    <img src="assets/images/w1.jpg" style="width:100%">
+  </div>
+
+</div>
+
+</div>
+
+<h3 id="meth2">Data Preparation</h3>
+<p>The card below explains the data preparation steps. Key code snippets are available in the accordion.</p>
+
+<div class="zzo">
+    <img src="assets/images/dp1.gif" style="width:150px !important; float:right; border-radius:50%">
+
+  <ul>
+	<li>Extract all images into 1 folder.</li>
+	<li>Read in images as grayscale.</li>
+	<li>Set image type a sfloat.</li>
+	<li>Normalize to set the floats to between 0 (white) and 1 (black).</li>
+	<li>Get image class name by taking only first character of the file name.</li>
+	<li>Assign a unique number to each class.</li>
+	<li>Examine the image array test a few images.</li>
+	<li>Flatten the 64x64 pixels into a 1D array of 4096 rows.</li>
+	<li>Reshape to a numpy array.</li>
+	<li>Split data into training and testing sets.</li>
+  </ul>
+  <div class="accordion" id="accordion1">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        See the code.
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion1">
+      <div class="accordion-body">
+<pre>
+<span class="c1"># Code adapted from <a href="https://towardsdatascience.com/loading-custom-image-dataset-for-deep-learning-models-part-1-d64fa7aaeca6">https://towardsdatascience.com</a> </span>
+<span class="c1"># For simplicity, all files were copied out of their subdirectories into single "Images" folder. </span>
+<span class="n">img_data_array</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">class_name</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">folder_name</span> <span class="o">=</span> <span class="s2">"Images"</span>
+<span class="k">for</span><span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">)):</span>
+    <span class="n">counter</span> <span class="o">+=</span><span class="mi">1</span>
+    <span class="n">image_path</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span>  <span class="n">file</span><span class="p">)</span>
+    <span class="n">image</span><span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">/=</span> <span class="mi">255</span> <span class="c1"></span>
+    <span class="n">img_data_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">note_class</span> <span class="o">=</span> <span class="n">file</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">class_name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">note_class</span><span class="p">)</span>
+
+<span></span><span class="c1"># Assigning a unique number to each class</span>
+<span class="n">note_classifier_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span><span class="n">value</span> <span class="k">for</span> <span class="n">value</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">class_name</span><span class="p">))}</span>
+
+<span></span><span class="c1"># This is y, converting the class names to a numeric value for all values</span>
+
+<span class="n">target_val</span><span class="o">=</span>  <span class="p">[</span><span class="n">note_classifier_dict</span><span class="p">[</span><span class="n">class_name</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">class_name</span><span class="p">))]</span>
+
+<span></span><span class="c1"># Examine the image array ... setting the threshold to 4096 or above avoids truncating the array</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mi">4096</span><span class="p">)</span>
+<span class="n">img_data_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span></span><span class="c1">#test to make sure our images are still good.</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_data_array</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys</span><span class="p">)</span>
+
+<span></span><span class="c1"># flatten the 64x64 pixels in to a 1D array </span>
+<span class="c1">#similar to what was done in MNIST class example</span>
+<span class="n">num_dimensions</span> <span class="o">=</span> <span class="mi">64</span><span class="o">*</span><span class="mi">64</span>
+
+<span class="c1">#need to make this an np array so we can use reshape</span>
+<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img_data_array</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">reshape_test</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">num_dimensions</span><span class="p">)</span>
+
+<span></span><span class="c1">#Split data into train and test sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">reshape_test</span><span class="p">,</span><span class="n">target_val</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span></span><span class="c1"># Our Training and Testing labels are integer encoded from 0 to 4</span>
+<span class="n">y_train</span><span class="p">[:</span><span class="mi">20</span><span class="p">]</span>
+
+<span></span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+<span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre>
+<hr>
+For entire code, see our <a href="https://github.com/sharonpete/musical-symbols-ml/blob/main/classify_music_notes.ipynb" target="_blank">Jupyter Notebook on GitHub.</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+<h3 id="meth3">Model Building</h3>
+
+<p>This card lays out the steps involved in building the models.</p>
+
+<div class="zzo">
+    <img src="assets/images/mb2.gif" style="width:150px !important; float:right; border-radius:50%">
+  <ul>
+	<li>Create an empty sequential model..</li>
+	<li>Add the input layer (4096 pixels per image).</li>
+	<li>Add the first hidden layer with 100 nodes and RELU activation function.</li>
+	<li>Add the second hidden layer. Also 100 nodes and RELU activation function.</li>
+	<li>Add the output layer with a SOFTMAX activation function.</li>
+	<li>Compile model using one of the 8 optimizers each time.</li>
+	<li>Train model.</li>
+	<li>Plot results.</li>
+	<li>Save model after each optimizer change.</li>
+  </ul>
+  <div class="accordion" id="accordion2">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+        See the code.
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion2">
+      <div class="accordion-body">
+<pre>
+<span class="c1"># Create an empty sequential model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+
+<span class="c1"># Add the first layer where the input dimensions are the 4096 pixel values</span>
+<span class="c1"># Activation function ... starting with 'relu'</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'softmax'</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="s2">"Adam"</span>
+<span class="c1"># optimizer = "SGD"</span>
+<span class="c1"># optimizer = "RMSprop"</span>
+<span class="c1"># optimizer = "Adadelta"</span>
+<span class="c1"># optimizer = "Adagrad"</span>
+<span class="c1"># optimizer = "Adamax"</span>
+<span class="c1"># optimizer = "Nadam"</span>
+<span class="c1"># optimizer = tf.keras.optimizers.Ftrl(learning_rate=.001)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> 
+<span class="n">loss</span><span class="o">=</span><span class="s1">'categorical_crossentropy'</span><span class="p">,</span>
+<span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> 
+<span class="n">loss</span><span class="o">=</span><span class="s1">'categorical_crossentropy'</span><span class="p">,</span>
+<span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+<span class="n">X_train</span><span class="p">,</span>
+<span class="n">y_train</span><span class="p">,</span>
+<span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="n">verbose</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Loss (training data)'</span><span class="p">)</span>
+<span class="c1"># plt.plot(history.history['acc'], label='MAE (validation data)')</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">'acc'</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Accuracy (training data)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Loss and Accuracy vs. Epochs - Optimizer: '</span><span class="o">+</span> <span class="n">optimizer</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Model Efficiency'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Epochs'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"middle"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"Results/100epoch_relu_"</span> <span class="o">+</span> <span class="n">optimizer</span> <span class="o">+</span> <span class="s2">".jpeg"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># commented out so we don't resave over existing file</span>
+<span class="c1">#model.save("Results/Notes_relu_" + optimizer + ".h5")</span>
+</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<h3 id="meth4">Model Evaluation</h3>
+<p>At this stage, we evaluated the performance of the model with each of the 8 optimizers and stored the loss & accuracy metrics in a dataframe.</p>
+
+
+<div class="zzo">
+    <img src="assets/images/mt1.gif" style="width:150px !important; float:right; border-radius:50%">
+
+  <ul>
+	<li>Create empty list to hold the results.</li>
+	<li>Loop through the saved models and evaluate each one.</li>
+	<li>For each model, append the following to the list created above:
+		<ul>
+			<li>Model name.</li>
+			<li>Model loss.</li>
+			<li>Model accuracy.</li>
+		</ul>
+	</li>
+	<li>Create a dataframe from the list.</li>
+	<li>Save dataframe as .csv file for reporting purposes.</li>
+  </ul>
+  <div class="accordion" id="accordion3">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+        See the code.
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion3">
+      <div class="accordion-body">
+<pre>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
+<span class="c1">#define list to hold model eval results</span>
+<span class="n">df_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">model_predictions</span><span class="p">(</span><span class="n">results_folder</span><span class="p">):</span>
+
+    
+<span class="k">for</span> <span class="n">model_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_folder</span><span class="p">)):</span>
+<span class="k">if</span> <span class="s2">"h5"</span> <span class="ow">in</span> <span class="n">model_file</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"working on file: "</span><span class="o">+</span><span class="n">model_file</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results_folder</span><span class="p">,</span><span class="n">model_file</span><span class="p">))</span>
+<span class="c1">#                 break #for testing purposes only</span>
+<span class="k">try</span><span class="p">:</span>
+<span class="n">model_loss</span><span class="p">,</span> <span class="n">model_accuracy</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Loss: </span><span class="si">{</span><span class="n">model_loss</span><span class="si">}</span><span class="s2">, Accuracy: </span><span class="si">{</span><span class="n">model_accuracy</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">model_file</span><span class="p">,</span> <span class="n">model_loss</span><span class="p">,</span><span class="n">model_accuracy</span><span class="p">])</span>
+<span class="k">except</span><span class="p">:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ftrl model defies being saved and will not load. filename:"</span><span class="o">+</span><span class="n">model_file</span><span class="p">)</span>
+
+<span class="c1"># put results to df</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_list</span><span class="p">)</span>
+<span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_list</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Model"</span><span class="p">,</span><span class="s2">"Loss"</span><span class="p">,</span><span class="s2">"Accuracy"</span><span class="p">])</span>
+
+<span class="c1">#save to csv for later loading/graphing elsewhere</span>
+<span class="n">results_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'Results'</span><span class="p">,</span><span class="s1">'Model_predict_loss_acc.csv'</span><span class="p">),</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+
+<h2 id="results">Results</h3>
+<p>We present our results in three sets of graphs:</p>
+<ul class="resultlist">
+	<li>
+		<details>
+			<summary class="text-primary mb-3">Model performance metrics (loss and accuracy) of different optimizers [8 PLOTLY charts].</summary>
+			<div class="row">
+				<div class="col-lg-6 col-sm-12">
+				<img src="file:///C:/Users/fkmaa/Desktop/Project3Webpage/Results/100epoch_relu_Adadelta.jpeg">
+				</div>
+				<div class="col-lg-6 col-sm-12">
+				<img src="file:///C:/Users/fkmaa/Desktop/Project3Webpage/Results/100epoch_relu_Adagrad.jpeg">
+				</div>
+				<div class="col-lg-6 col-sm-12">
+				<img src="file:///C:/Users/fkmaa/Desktop/Project3Webpage/Results/100epoch_relu_Adam.jpeg">
+				</div>
+				<div class="col-lg-6 col-sm-12">
+				<img src="file:///C:/Users/fkmaa/Desktop/Project3Webpage/Results/100epoch_relu_Adamax.jpeg">
+				</div>
+				<div class="col-lg-6 col-sm-12">
+				<img src="file:///C:/Users/fkmaa/Desktop/Project3Webpage/Results/100epoch_relu_Ftrl.jpeg">
+				</div>
+				<div class="col-lg-6 col-sm-12">
+				<img src="file:///C:/Users/fkmaa/Desktop/Project3Webpage/Results/100epoch_relu_Nadam.jpeg">
+				</div>
+				<div class="col-lg-6 col-sm-12">
+				<img src="file:///C:/Users/fkmaa/Desktop/Project3Webpage/Results/100epoch_relu_RMSprop.jpeg">
+				</div>
+				<div class="col-lg-6 col-sm-12">
+				<img src="file:///C:/Users/fkmaa/Desktop/Project3Webpage/Results/100epoch_relu_SGD.jpeg">
+				</div>
+			</div>
+		</details>
+	</li>
+
+	<li>
+		<details>
+			<summary class="text-primary mb-3">Model performance metrics (loss and accuracy) of different optimizers [1 interactive JS chart].</summary>
+			<div class="row">
+			<div class="col-lg-6 col-sm-12">
+			</div>
+			</div>
+		</details>
+	</li>
+	<li>
+		<details>
+			<summary class="text-primary mb-3">Model prediction performance metrics (loss and accuracy) of different optimizers [1 interactive JS chart].</summary>
+			<div class="row">
+			<div class="col-lg-12 col-sm-12">
+				<figure class="highcharts-figure">
+					<div id="container"></div>
+					<p class="highcharts-description">
+						A spiderweb chart or radar chart is a variant of the polar chart.
+						Spiderweb charts are commonly used to compare multivariate data sets,
+						like this demo using six variables of comparison.
+					</p>
+				</figure>
+			</div>
+			</div>
+		</details>
+	</li>
+</ul>
+
+<h2 id="discussion">Discussion</h3>
+<p>So ..........</p>
+      </div>
+    </main>
+  </div>
+
+
+    <footer class="bd-footer py-5 mt-5 bg-light" id="team">
+  <div class="container py-5">
+  
+    <div class="row">
+      <div class="col-lg-12 mb-3">
+        <a class="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
+          <img src="assets/images/bcc.png" width="40" height="32" class="d-block me-2" viewBox="0 0 118 94" role="img">
+          <span class="fs-5">University of Minnesota Data Visualization and Analytics Boot Camp</span>
+        </a>
+        <p class="list-unstyled small text-muted">
+			This project was undertaken in partial-fulfilment of the requirements for a Certificate in <a href="https://bootcamp.umn.edu/data/" target="_blank">Data Visualization and Analytics</a> through the University of Minnesota. 
+			
+        </p>
+      </div>
+
+	</div>
+    <div class="row">
+      <div class="col-6 col-lg-3 mb-3 profiles">
+		<div class="col-lg-12">
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Alyssa</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-outline-primary lip" href="#" role="button">See my LinkedIn</a></p>
+          </div>      
+      </div>
+      <div class="col-6 col-lg-3 mb-3 profiles">
+		<div class="col-lg-12">
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Fukhrudin</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-outline-primary lip" href="#" role="button">See my LinkedIn</a></p>
+          </div>      
+      </div>
+      <div class="col-6 col-lg-3 mb-3 profiles">
+		<div class="col-lg-12">
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Mike</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-outline-primary lip" href="#" role="button">See my LinkedIn</a></p>
+          </div>      
+      </div>
+      <div class="col-6 col-lg-3 mb-3 profiles">
+		<div class="col-lg-12">
+            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2>Sharon</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+            <p><a class="btn btn-outline-primary lip" href="#" role="button">See my LinkedIn</a></p>
+          </div>      
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://getbootstrap.com/docs/5.0/assets/js/docs.min.js"></script>
+<script src="assets/js/spiderchart.js"></script>
+
+
+</body>
 </html>
-
