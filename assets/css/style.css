@@ -1,0 +1,136 @@
+.bd-layout {
+    grid-template-columns: 6fr !important;
+	}
+.bd-main {
+    grid-template-columns: 3fr 1fr !important;
+}	
+.profiles {
+    text-align:center !important;
+	}
+.newheader {
+	background:#7951B3;
+}
+.githublink {
+	color:#ffffff;
+}
+.githublink:hover {
+	color:#7952b3;
+}
+.ptitle {
+	color:white;
+	
+}
+.zzo {
+  position: relative;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  background-color: #ede9f3;
+  /* example content */
+  padding: 1em;
+}
+.zzo:before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  /* red up pointing triangle */
+  background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%228px%22%20height%3D%224px%22%3E%3Cpolygon%20points%3D%220%2C4%204%2C0%208%2C4%22%20fill%3D%22%23ede9f3%22%2F%3E%3C%2Fsvg%3E");
+}
+.zzo:after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  /* red down pointing triangle */
+  background-image: url("data:image/svg+xml,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%228px%22%20height%3D%224px%22%3E%3Cpolygon%20points%3D%220%2C0%204%2C4%208%2C0%22%20fill%3D%22%23ede9f3%22%2F%3E%3C%2Fsvg%3E");
+}
+/* Styles just for demo */
+.zzo img {
+  width:100% !important;
+}
+a.anchor-link {
+   display: none;
+}
+.highlight  {
+    margin: 0.4em;
+}
+
+/* Input area styling */
+.jp-InputArea {
+    overflow: hidden;
+}
+
+.jp-InputArea-editor {
+    overflow: hidden;
+}
+
+@media print {
+  body {
+    margin: 0;
+  }
+}
+
+.lip {
+	color:#0d6efd !important;
+}
+.lip:hover {
+	color:#ffffff !important;
+}
+.rowx {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create two equal columns that sits next to each other */
+.columnx {
+  -ms-flex: 20%; /* IE 10 */
+  flex: 20%;
+  padding: 10px;
+}
+
+.columnx img {
+  margin-top: 8px;
+  vertical-align: middle;
+  filter: invert(10%);
+  border-radius:5px
+}
+.c1 {
+	color:#408080;
+	font-style:italic;
+}
+.o{
+	color:#aa22ff;
+	font-weight:bold;
+}
+.s1, .s2 {
+	color:#ba2121;
+}
+.p {
+	color:#05a;
+}
+.mi {
+	color:#080;
+}
+.k {
+	color:#008000;
+	font-weight:bold;
+}
+.resultlist li {
+	list-style-type:none !important;
+}
+.highcharts-figure, .highcharts-data-table table {
+    min-width: 600px;
+    max-width: 1000px;
+    margin: 1em auto;
+	height:500px !important;
+	max-height:500px !important;
+}
+.highcharts-container, .highcharts-root {
+	width:100% !important;
+	height:500px !important;
+}
