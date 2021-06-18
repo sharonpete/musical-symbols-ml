@@ -18,8 +18,8 @@ Highcharts.chart('container', {
     },
 
     xAxis: {
-        categories: ['Adadelta', 'Adagrad', 'Adam', 'Adamax', 'Ftrl',
-            'Nadam', 'RMSprop', 'SGD'],
+        categories: ['Adadelta', 'Adagrad', 'Adam', 'Adamax',
+            'Nadam', 'RMSprop', 'SGD', 'Ftrl'],
         tickmarkPlacement: 'on',
         lineWidth: 0
     },
@@ -44,15 +44,15 @@ Highcharts.chart('container', {
 
     series: [{
         name: 'Accuracy',
-        data: [0.658, 0.834, 0.834, 0.945, 0.326, 0.734, 0.953, 0.89],
+        data: [0.649, 0.842, 0.96, 0.95, 0.941, 0.76, 0.948, 0.542],
         pointPlacement: 'on'
     }, {
         name: 'Loss',
-        data: [1.023, 0.464, 0.456, 0.177, 1.609, 1.12, 0.132, 0.332],
+        data: [1.009, 0.459, 0.132, 0.159, 0.194, 0.943, 0.154, 1.108],
         pointPlacement: 'on'
     }, {
-        name: 'Time',
-        data: [1.0044, 1.390, 1.002, 1.078, 1.409, 2.237, 1.526, 0.839],
+        name: 'Time (min)',
+        data: [1.0044, 1.390, 1.002, 1.078, 2.237, 1.526, 0.839, 1.409],
         pointPlacement: 'on'
     }],
 
