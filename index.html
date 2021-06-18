@@ -237,7 +237,7 @@ For entire code, see our <a href="https://github.com/sharonpete/musical-symbols-
 	<li>Add the first hidden layer with 100 nodes and RELU activation function.</li>
 	<li>Add the second hidden layer. Also 100 nodes and RELU activation function.</li>
 	<li>Add the output layer with a SOFTMAX activation function.</li>
-	<li>Compile model using one of the 8 optimizers each time.</li>
+	<li>Compile model using one of the <a href="https://keras.io/api/optimizers/">8 optimizers</a> each time.</li>
 	<li>Train model.</li>
 	<li>Plot results.</li>
 	<li>Save model after each optimizer change.</li>
@@ -445,12 +445,13 @@ For entire code, see our <a href="https://github.com/sharonpete/musical-symbols-
 <ul>
 <li>Accuracy:</li>
 <ul>
-<li>Highest prediction accuracy: RMSprop, Adamax, SGD</li>
-<li>Lowest prediction accuracy: *Ftrl, Adadelta, Nadam</li>
+<li>Highest prediction accuracy (over 94%): Adam, Adamax, Nadam, SGD</li>
+<li>Lowest prediction accuracy: *Ftrl, Adadelta</li>
 </ul>
 </li>
 <li>Model run-time worth considering if dealing with a large number of epochs/data.</li>
-<li>*With more time, we would have explored Ftrl more and tweaked one or more of the many parameters.</li>
+<li>*With more time, we would have explored <a href="https://keras.io/api/optimizers/ftrl/">Ftrl</a> more and tweaked one or more of the many parameters.</li>
+<li>Future research option is testing each optimizer on different datasets to help identify best practices in matching data-types with an optimizer. </li>
 </ul>
 
 
