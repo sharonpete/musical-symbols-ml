@@ -34,6 +34,14 @@ This study builds a neural network, holds the topology constant with the same nu
 
 1. Data wrangling
 The original data is found [here](https://www.kaggle.com/kishanj/music-notes-datasets) on  Kaggle.  The initial zip file extract put the files in several levels of  subfolders for each note type. To simplify the code, all files were copied out of their subdirectories into single "Images" folder. Images folder was added to .gitignore because the size of the data exceeded git limits.
-1. 
+1. Optimizers evaluated
+- Adam
+- Adamax
+- Adagrad
+- Adadelta
+- Ftrl
+- Nadam
+- RMSprop
+- SGD
 
 ## Findings and Conclusions
