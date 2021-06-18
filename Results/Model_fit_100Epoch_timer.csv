@@ -1,0 +1,9 @@
+Optimizer,Model_Fit_Time
+Adam,60.13
+SGD,50.31
+RMSprop,91.57
+Adadelta,62.61
+Adagrad,83.38
+Adamax,64.68
+Nadam,134.21
+Ftrl,84.55
