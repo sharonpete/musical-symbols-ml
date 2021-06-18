@@ -34,7 +34,8 @@ This study builds a neural network, holds the topology constant with the same nu
 
 1. Data wrangling
 The original data is found [here](https://www.kaggle.com/kishanj/music-notes-datasets) on  Kaggle.  The initial zip file extract put the files in several levels of  subfolders for each note type. To simplify the code, all files were copied out of their subdirectories into single "Images" folder. Images folder was added to .gitignore because the size of the data exceeded git limits.
-1. Optimizers evaluated
+
+1. [Optimizers evaluated](https://keras.io/api/optimizers/)
 - Adam
 - Adamax
 - Adagrad
@@ -43,5 +44,15 @@ The original data is found [here](https://www.kaggle.com/kishanj/music-notes-dat
 - Nadam
 - RMSprop
 - SGD
+
+1. Technologies used
+- Sklearn for data preprocessing
+- Tensorflow keras for neural network library with tested optimizers
+- Pandas DataFrame for wrangling results
+- Matplotlib for charting results
+- HighCharts.com Spider graph (independent JavaScript charting library)
+- Bootstrap, HTML, CSS
+- Tableau for charting results
+-  
 
 ## Findings and Conclusions
