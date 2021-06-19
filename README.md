@@ -53,6 +53,17 @@ The original data is found [here](https://www.kaggle.com/kishanj/music-notes-dat
 - HighCharts.com Spider graph (independent JavaScript charting library)
 - Bootstrap, HTML, CSS
 - Tableau for charting results
--  
+  
 
 ## Findings and Conclusions
+
+Accuracy:
+-   Highest prediction accuracy (over 94%): Adam, Adamax, Nadam, SGD
+-   Lowest prediction accuracy: *Ftrl, Adadelta
+-
+time:
+- Model run-time worth considering if dealing with a large number of epochs/data.
+
+Future iterations:
+- *With more time, we would have explored Ftrl more and tweaked one or more of the many parameters.
+- Future research option is testing each optimizer on different datasets to help identify best practices in matching data-types with an optimizer.
